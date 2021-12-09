@@ -36,7 +36,7 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
 const Login = () => {
 
     // Reducer: Funcion que regresa un nuevo estado
-    const [{validando}, dispatch] = useReducer(authReducer, initialState,);
+    const [{validando, token}, dispatch] = useReducer(authReducer, initialState,);
 
     useEffect(() => {
         setTimeout(() => {
@@ -60,13 +60,14 @@ const Login = () => {
         <>
             <h3>Login</h3>
 
-            <div className="alert alert-danger">
-                No autenticado
-            </div>
+            {
+                ( token )
+                    ? <div className="alert alert-success"> Autenticado </div>
+                    : <div className="alert alert-danger"> No autenticado </div>
+            
+            }
 
-            <div className="alert alert-success">
-                Autenticado
-            </div>
+
 
             <button className="btn btn-primary">
                 Login
